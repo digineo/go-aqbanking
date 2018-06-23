@@ -123,3 +123,13 @@ func (ab *AQBanking) Accounts() (AccountCollection, error) {
 
 	return list, nil
 }
+
+// GetIBAN returns the account matching the given IBAN
+func (coll AccountCollection) GetIBAN(iban string) *Account {
+	for _, account := range coll {
+		if account.IBAN == iban {
+			return &account
+		}
+	}
+	return nil
+}
